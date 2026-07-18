@@ -258,6 +258,11 @@ export default function NumberSenseGame() {
     return answerIndex + 1;
   };
 
+  const getLeaderboardRank = (playerIndex: number) => {
+    const score = leaderboard[playerIndex].score;
+    return leaderboard.findIndex((player) => player.score === score) + 1;
+  };
+
   return (
     <div className="mx-auto max-w-4xl">
       <div className="mb-6">
@@ -508,6 +513,43 @@ export default function NumberSenseGame() {
             })}
           </div>
 
+          <div className="mt-7 rounded-2xl border-2 border-emerald-100 bg-emerald-50/60 p-4 md:p-5">
+            <div className="mb-4 flex items-center justify-between gap-3">
+              <h3 className="font-black text-gray-800">현재 누적 순위</h3>
+              <span className="text-sm font-semibold text-emerald-700">
+                {roundIndex + 1} / {questions.length} 완료
+              </span>
+            </div>
+            <div className="grid gap-2 md:grid-cols-2">
+              {leaderboard.map((player, index) => {
+                const rank = getLeaderboardRank(index);
+
+                return (
+                  <div
+                    key={player.id}
+                    className="flex items-center justify-between rounded-xl bg-white px-4 py-3 shadow-sm"
+                  >
+                    <div className="flex min-w-0 items-center gap-3">
+                      <span
+                        className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-black ${
+                          rank === 1
+                            ? 'bg-amber-400 text-white'
+                            : 'bg-gray-100 text-gray-600'
+                        }`}
+                      >
+                        {rank}
+                      </span>
+                      <span className="truncate font-bold text-gray-800">{player.name}</span>
+                    </div>
+                    <span className="ml-3 shrink-0 font-black text-emerald-600">
+                      {player.score}점
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
           <button
             type="button"
             onClick={moveToNextRound}
@@ -539,10 +581,7 @@ export default function NumberSenseGame() {
           <div className="p-5 md:p-8">
             <div className="space-y-3">
               {leaderboard.map((player, index) => {
-                const rank =
-                  index > 0 && player.score === leaderboard[index - 1].score
-                    ? leaderboard.findIndex((item) => item.score === player.score) + 1
-                    : index + 1;
+                const rank = getLeaderboardRank(index);
 
                 return (
                   <div key={player.id} className="flex items-center justify-between rounded-xl bg-gray-50 p-4">
