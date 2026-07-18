@@ -21,6 +21,13 @@ export default function Home() {
               게임입니다.
             </p>
           </div>
+          <div className="border-l-4 border-emerald-500 pl-4">
+            <h3 className="text-xl font-semibold text-gray-800">🎯 숫자 감각</h3>
+            <p className="text-gray-600 mt-2">
+              세상의 크고 작은 숫자를 추측해보세요! 정답에 가장 가까운 사람이
+              라운드 점수를 얻습니다.
+            </p>
+          </div>
         </div>
       </div>
       <div className="bg-gradient-to-r from-purple-100 to-indigo-100 rounded-xl p-6">

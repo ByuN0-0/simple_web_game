@@ -25,11 +25,6 @@ export default function TimerChallengeGame() {
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    const newNames = Array(playerCount).fill('').map((_, i) => playerNames[i] || '');
-    setPlayerNames(newNames);
-  }, [playerCount]);
-
-  useEffect(() => {
     return () => {
       if (timerRef.current) {
         clearInterval(timerRef.current);
@@ -146,7 +141,13 @@ export default function TimerChallengeGame() {
               min="2"
               max="8"
               value={playerCount}
-              onChange={(e) => setPlayerCount(parseInt(e.target.value))}
+              onChange={(e) => {
+                const nextCount = parseInt(e.target.value);
+                setPlayerCount(nextCount);
+                setPlayerNames((currentNames) =>
+                  Array.from({ length: nextCount }, (_, index) => currentNames[index] || '')
+                );
+              }}
               className="w-full h-2 bg-indigo-200 rounded-lg appearance-none cursor-pointer accent-indigo-600"
             />
           </div>

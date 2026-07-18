@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 
 interface Player {
   name: string;
@@ -20,11 +20,6 @@ export default function CircleDrawGame() {
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [points, setPoints] = useState<{ x: number; y: number }[]>([]);
-
-  useEffect(() => {
-    const newNames = Array(playerCount).fill('').map((_, i) => playerNames[i] || '');
-    setPlayerNames(newNames);
-  }, [playerCount]);
 
   const startGame = () => {
     if (playerNames.some(name => !name.trim())) {
@@ -203,7 +198,13 @@ export default function CircleDrawGame() {
               min="2"
               max="8"
               value={playerCount}
-              onChange={(e) => setPlayerCount(parseInt(e.target.value))}
+              onChange={(e) => {
+                const nextCount = parseInt(e.target.value);
+                setPlayerCount(nextCount);
+                setPlayerNames((currentNames) =>
+                  Array.from({ length: nextCount }, (_, index) => currentNames[index] || '')
+                );
+              }}
               className="w-full h-2 bg-purple-200 rounded-lg appearance-none cursor-pointer accent-purple-600"
             />
           </div>

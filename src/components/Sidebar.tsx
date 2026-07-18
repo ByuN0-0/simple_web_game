@@ -8,6 +8,7 @@ const games = [
   { name: '홈', path: '/' },
   { name: '원 그리기', path: '/circle-draw' },
   { name: 'N초 맞추기', path: '/timer-challenge' },
+  { name: '숫자 감각', path: '/number-sense' },
 ];
 
 export default function Sidebar() {
