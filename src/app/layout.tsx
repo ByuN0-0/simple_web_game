@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "글램핑 게임",
-  description: "글램핑에서 즐기는 모바일 웹 게임",
+  title: "미니게임",
+  description: "여럿이 함께 즐기는 모바일 미니게임",
 };
 
 export default function RootLayout({

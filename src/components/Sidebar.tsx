@@ -9,6 +9,8 @@ const games = [
   { name: '원 그리기', path: '/circle-draw' },
   { name: 'N초 맞추기', path: '/timer-challenge' },
   { name: '숫자 감각', path: '/number-sense' },
+  { name: '반응속도 테스트', path: '/reaction-test' },
+  { name: '각도 감각', path: '/angle-sense' },
 ];
 
 export default function Sidebar() {
@@ -60,7 +62,7 @@ export default function Sidebar() {
           isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
         }`}
       >
-        <h1 className="text-2xl font-bold mb-8 mt-12 md:mt-0">🏕️ 글램핑 게임</h1>
+        <h1 className="text-2xl font-bold mb-8 mt-12 md:mt-0">🎮 미니게임</h1>
         <nav className="space-y-2">
           {games.map((game) => (
             <Link

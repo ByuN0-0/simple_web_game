@@ -2,7 +2,7 @@ export default function Home() {
   return (
     <div className="max-w-4xl">
       <h1 className="text-4xl font-bold text-gray-800 mb-6">
-        글램핑 게임에 오신 것을 환영합니다! 🎉
+        미니게임에 오신 것을 환영합니다! 🎉
       </h1>
       <div className="bg-white rounded-xl shadow-lg p-8 mb-6">
         <h2 className="text-2xl font-semibold text-purple-600 mb-4">게임 목록</h2>
@@ -26,6 +26,20 @@ export default function Home() {
             <p className="text-gray-600 mt-2">
               세상의 크고 작은 숫자를 추측해보세요! 정답에 가장 가까운 사람이
               라운드 점수를 얻습니다.
+            </p>
+          </div>
+          <div className="border-l-4 border-rose-500 pl-4">
+            <h3 className="text-xl font-semibold text-gray-800">⚡ 반응속도 테스트</h3>
+            <p className="text-gray-600 mt-2">
+              화면이 초록색으로 바뀌는 순간 터치하세요! 가장 빠르게 반응한 사람이
+              승리합니다.
+            </p>
+          </div>
+          <div className="border-l-4 border-sky-500 pl-4">
+            <h3 className="text-xl font-semibold text-gray-800">📐 각도 감각</h3>
+            <p className="text-gray-600 mt-2">
+              숫자 표시 없이 목표 각도와 같은 선을 그려보세요! 오차가 가장 작은
+              사람이 승리합니다.
             </p>
           </div>
         </div>
